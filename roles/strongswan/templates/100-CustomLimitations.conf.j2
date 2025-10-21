@@ -11,11 +11,15 @@ ProtectKernelTunables=yes
 ProtectControlGroups=yes
 
 # Network restrictions - include IPsec kernel communication requirements
+# remove this to fix error
+# RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_PACKET
 RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_PACKET
 
 # Allow access to IPsec configuration, state, and kernel interfaces
 ReadWritePaths=/etc/ipsec.d /var/lib/strongswan
-ReadOnlyPaths=/proc/net/pfkey
+# remove this to fix error
+# ReadOnlyPaths=/proc/net/pfkey
+ReadOnlyPaths=
 
 # System call filtering (complements AppArmor restrictions)
 # Allow crypto operations, remove cpu-emulation restriction for crypto algorithms
